@@ -11,4 +11,46 @@
 	-System.ServiceModel.Activities.Send used to send the message out from a workflow
 	-System.ServiceModel.Activities.SendReply Used to send message out and wait for a response message
 	
+	
++ Activities That derive from System.activities.CodeActivity
+	-System.Activities.Statements.AddToCollection<T> Adds an object to a collection
+	-System.Activities.Statements.Assing Assigns a value to another object
+	-System.Activities.Statements.Assing<T> Assigns a value to another object based on a specified type
+	-System.Activities.Statements.ClearCollection<T> clear out items withing a collection
+	-System.Activities.Statements.Throw  Throw an exception withing a workflow
+	-System.Activities.Statements.WriteLine write a strign information from the workflow
+	
++ CodeActivity 
+	-use outParameter to pass data from an activity. e.g. context.SetValue(CalculatedCommition, commition);
++ System.activities.Activity.CodeActivity<TResult>
+	-returning the value for the activity
+	-Protected Override decimal Execute method return type is matching with the Generic Glasstype.
++Design time validation
+    - [RequiredArgument] attribute force to pass argument
+	- Override this method, Protected Override void CacheMetadata(CodeActivityMetadata md), and use property of metadata. and that is md.AddValidationErro("");
+	
++ InArgument and OutArgument type
+	var inargs = new Dictionary<string,int>();
+	inargs.Add("arg1",10);
+	inargs.Add("arg2",20);
+	var arg = WorkflowInvoker.Invoke(workflo1, inargs);
+	Console.WriteLine("{0}",arg["outArg"]);
+   
++ Activity Designer
+	- Base class of ActivityDesigner is the part of System.Activities.Presentation.
+	- sap: System.Activities.Presentation
+	-sapv: System.Activities.Presentation.View
+	- Add an attribute of CustomActivityDesigner to the custom activity  [Designer(typeof(CustomActivityDesigner))] to associate designer to activity
+	- ExpressionTextbox: provides the implementation for customized editing of expression for a custom activity.
+	  e.g. <sapv:ExpressionTextbox Expression="{Binding Path=ModelItem.ChildWriteLine, Mode=TwoWay}" HintText="Drop an activity"  AllowedItemType="{x:Type sa:WriteLine}" />
 
++ NativeActivity
+	- Have WF Runtime Support
+		- Communicate from outside of a workflow
+		- Schedule and cancel child activity execution
+		- Abort Activities
+	- Direct interaction with WF runtime when they are executed withing workflow
+	- Have a full access to features that the WF runtime provies e.g. Communication throgh Bookmark, scheduling of child activities, and persitence.
+	-  WaitForResponse<TResult> : NativeActivity<TResult>
++ Scheduling Activities 
+	
