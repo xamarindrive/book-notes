@@ -1,0 +1,14 @@
+
++ Activity Types That Derive From System.Activities.Activity
+	-System.Activities.ActivityWithResult Get the value or type for an activity out argument
+	-System.Activities.AsyncCodeActivity Handles Asyncronous code execution from begining to end.
+	-System.Activities.CodeActivity Executes code within an activity using the Execute Method and gives access to arguments and variables.
+	-System.Activities.DynamicActivity Allows activities to assemble dynamically that interface to the WF Designer and WF Runtime.
+	-System.Activities.NativeActivity Simiar to the CodeActivity except has full access to the WF Runtime.
+	
+	-System.ServiceModel.Activities.Recieve Used to recieve message within a workflow.
+	-System.ServiceModel.Activities.ReceiveReply  Used to recieve message and then send a response to the sender.
+	-System.ServiceModel.Activities.Send used to send the message out from a workflow
+	-System.ServiceModel.Activities.SendReply Used to send message out and wait for a response message
+	
+
